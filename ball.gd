@@ -16,7 +16,7 @@ func _process(delta):
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravity*1.5 * delta
 
 	#print(velocity)
 	
@@ -28,7 +28,8 @@ func _physics_process(delta):
 			print(collision.get_normal())
 			print(collision.get_remainder())
 			print(player.velocity)
-			var reflect = collision.get_remainder().bounce(collision.get_normal()) + player.velocity
+			var add_velocity = player.velocity + Vector2(0, -1000)
+			var reflect = collision.get_remainder().bounce(collision.get_normal()) + add_velocity
 			print(reflect)
 			velocity = velocity.bounce(collision.get_normal())
 			move_and_collide(reflect * delta)

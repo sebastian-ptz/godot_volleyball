@@ -26,8 +26,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	print("X: %f - Y: %f" %[velocity.x, velocity.y])
-	print("Anim: " + get_random_animation())
+	#print("X: %f - Y: %f" %[velocity.x, velocity.y])
+	#print("Anim: " + get_random_animation())
 	
 	if velocity.y < 0:
 		$AnimatedSprite2D.animation = "jump"
