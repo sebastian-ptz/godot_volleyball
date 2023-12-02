@@ -66,7 +66,7 @@ position = Vector2(1064, 560)
 player_type = "p2"
 
 [node name="Ball" parent="." instance=ExtResource("3_xp26c")]
-position = Vector2(464, 568)
+position = Vector2(129, 66)
 
 [node name="Net" type="StaticBody2D" parent="."]
 collision_layer = 17
@@ -83,5 +83,3 @@ debug_color = Color(0.945098, 0.121569, 0.501961, 0.419608)
 position = Vector2(576, 318.5)
 shape = SubResource("RectangleShape2D_4uyfx")
 debug_color = Color(0.945098, 0.121569, 0.501961, 0.419608)
-
-[connection signal="body_entered" from="Ball" to="." method="_on_ball_body_entered"]

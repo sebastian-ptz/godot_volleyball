@@ -1,18 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ua12w7l4xw6h"]
+[gd_scene load_steps=3 format=3 uid="uid://ua12w7l4xw6h"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_njmwk"]
-[ext_resource type="Texture2D" uid="uid://dv2mjncx1ddut" path="res://icon.svg" id="1_pd2ji"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3vhm"]
-size = Vector2(100, 100)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j61rs"]
+radius = 47.0
+height = 132.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 17
 script = ExtResource("1_njmwk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_k3vhm")
+shape = SubResource("CapsuleShape2D_j61rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_pd2ji")

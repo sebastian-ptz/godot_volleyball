@@ -1,18 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://biuxvb4odvmk3"]
+[gd_scene load_steps=4 format=3 uid="uid://biuxvb4odvmk3"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_8t0s2"]
 [ext_resource type="Texture2D" uid="uid://dv2mjncx1ddut" path="res://icon.svg" id="1_13djt"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1lc5p"]
-friction = 0.5
-bounce = 0.6
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6log"]
 radius = 32.0
 
-[node name="Ball" type="RigidBody2D"]
+[node name="Ball" type="CharacterBody2D"]
 collision_layer = 17
-physics_material_override = SubResource("PhysicsMaterial_1lc5p")
 script = ExtResource("1_8t0s2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
