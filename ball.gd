@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
-
 var gravity = 1000
+var air_resistiance = 0.8
+
 func _ready():
 	pass # Replace with function body.
 
@@ -16,7 +17,8 @@ func _process(delta):
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity*1.5 * delta
+		velocity.y += gravity * delta
+		#velocity.x *= air_resistiance
 
 	#print(velocity)
 	
