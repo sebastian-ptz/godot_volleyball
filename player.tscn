@@ -1,10 +1,3 @@
-[gd_scene load_steps=3 format=3 uid="uid://ua12w7l4xw6h"]
-
-[ext_resource type="Script" path="res://player.gd" id="1_njmwk"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j61rs"]
-radius = 47.0
-height = 132.0
 [gd_scene load_steps=20 format=3 uid="uid://ua12w7l4xw6h"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_njmwk"]
@@ -105,15 +98,10 @@ animations = [{
 radius = 16.0
 height = 52.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 17
 script = ExtResource("1_njmwk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_j61rs")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.76837e-07, 4.76837e-07)
 scale = Vector2(1.77778, 1.6)
