@@ -1,10 +1,14 @@
 extends AnimatedSprite2D
 
+@export var _animation = "cloud_1"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	$AnimationPlayer.play("cloud/" + _animation)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	self.play("move")
+	
+	if $AnimationPlayer.animation_finished:
+		$AnimationPlayer.play("cloud/" + _animation)
+		

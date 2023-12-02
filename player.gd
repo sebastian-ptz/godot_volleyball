@@ -52,12 +52,12 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.animation = "walk"
 	else:
-		$AnimatedSprite2D.animation = get_random_animation()
+		$AnimatedSprite2D.animation = get_random_animation(delta)
 
 
-func get_random_animation() -> String:
+func get_random_animation(delta) -> String:
 	var random_float = randf()
-	if random_float < 0.2: #20% blink
-		return "blink"
-	else: 
-		return "idle"
+	if int(delta)%5 == 0:
+		if random_float < 0.05: #5% blink
+			return "blink"
+	return "idle"

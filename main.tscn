@@ -1,10 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3s1068eq6d6w"]
+[gd_scene load_steps=14 format=3 uid="uid://c3s1068eq6d6w"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_052qy"]
 [ext_resource type="PackedScene" uid="uid://ua12w7l4xw6h" path="res://player.tscn" id="1_ujl1b"]
 [ext_resource type="Texture2D" uid="uid://dv2mjncx1ddut" path="res://icon.svg" id="2_6its2"]
-[ext_resource type="PackedScene" uid="uid://bmawmcgx27ssq" path="res://user_interface.tscn" id="2_ww4sb"]
+[ext_resource type="PackedScene" path="res://user_interface.tscn" id="2_ww4sb"]
 [ext_resource type="PackedScene" uid="uid://biuxvb4odvmk3" path="res://ball.tscn" id="3_xp26c"]
+[ext_resource type="PackedScene" uid="uid://cribfhqx77pav" path="res://cloud_animated.tscn" id="6_hxktm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqknc"]
+size = Vector2(26, 328)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdn5b"]
 size = Vector2(26, 1144)
@@ -14,9 +18,6 @@ size = Vector2(33, 1152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jll3x"]
 size = Vector2(1144, 25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqknc"]
-size = Vector2(26, 328)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uyfx"]
 size = Vector2(32, 643)
@@ -37,6 +38,25 @@ color = Color(0.0313726, 0.364706, 0.803922, 1)
 
 [node name="User Interface" parent="ColorRect" instance=ExtResource("2_ww4sb")]
 layout_mode = 1
+
+[node name="Ball" parent="." instance=ExtResource("3_xp26c")]
+position = Vector2(575, 84)
+
+[node name="Player" parent="." instance=ExtResource("1_ujl1b")]
+position = Vector2(96, 560)
+
+[node name="Player2" parent="." instance=ExtResource("1_ujl1b")]
+position = Vector2(1064, 560)
+player_type = "p2"
+
+[node name="Net" type="StaticBody2D" parent="."]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
+position = Vector2(576, 480)
+shape = SubResource("RectangleShape2D_gqknc")
+debug_color = Color(0.945098, 0.121569, 0.501961, 0.419608)
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 position = Vector2(-104, 0)
@@ -61,25 +81,6 @@ shape = SubResource("RectangleShape2D_vciy1")
 position = Vector2(676, -508.5)
 shape = SubResource("RectangleShape2D_jll3x")
 
-[node name="Player" parent="." instance=ExtResource("1_ujl1b")]
-position = Vector2(96, 560)
-
-[node name="Player2" parent="." instance=ExtResource("1_ujl1b")]
-position = Vector2(1064, 560)
-player_type = "p2"
-
-[node name="Ball" parent="." instance=ExtResource("3_xp26c")]
-position = Vector2(575, 84)
-
-[node name="Net" type="StaticBody2D" parent="."]
-collision_layer = 17
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
-position = Vector2(576, 480)
-shape = SubResource("RectangleShape2D_gqknc")
-debug_color = Color(0.945098, 0.121569, 0.501961, 0.419608)
-
 [node name="PlayerCollider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
@@ -103,3 +104,9 @@ collision_mask = 19
 [node name="RightFloor" type="CollisionShape2D" parent="RightFloorCollider"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_v60bs")
+
+[node name="CloudAnim" parent="." instance=ExtResource("6_hxktm")]
+position = Vector2(-40, 112)
+
+[node name="CloudAnim2" parent="." instance=ExtResource("6_hxktm")]
+_animation = "cloud_2"
