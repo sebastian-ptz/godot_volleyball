@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3s1068eq6d6w"]
+[gd_scene load_steps=15 format=3 uid="uid://c3s1068eq6d6w"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_052qy"]
 [ext_resource type="PackedScene" uid="uid://ua12w7l4xw6h" path="res://player.tscn" id="1_ujl1b"]
 [ext_resource type="Texture2D" uid="uid://dv2mjncx1ddut" path="res://icon.svg" id="2_6its2"]
-[ext_resource type="PackedScene" path="res://user_interface.tscn" id="2_ww4sb"]
+[ext_resource type="PackedScene" uid="uid://bmawmcgx27ssq" path="res://user_interface.tscn" id="2_ww4sb"]
+[ext_resource type="Texture2D" uid="uid://cdftk0kjdfjts" path="res://art/beach.jpg" id="3_5cttt"]
 [ext_resource type="PackedScene" uid="uid://biuxvb4odvmk3" path="res://ball.tscn" id="3_xp26c"]
 [ext_resource type="PackedScene" uid="uid://cribfhqx77pav" path="res://cloud_animated.tscn" id="6_hxktm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqknc"]
-size = Vector2(26, 328)
+size = Vector2(26, 300)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdn5b"]
 size = Vector2(26, 1144)
@@ -17,24 +18,47 @@ size = Vector2(26, 1144)
 size = Vector2(33, 1152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jll3x"]
-size = Vector2(1144, 25)
+size = Vector2(1188, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uyfx"]
 size = Vector2(32, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7w26h"]
-size = Vector2(571.5, 40)
+size = Vector2(600, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v60bs"]
-size = Vector2(592, 40)
+size = Vector2(602, 40)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_052qy")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575, 325)
+scale = Vector2(0.616667, 0.607407)
+texture = ExtResource("3_5cttt")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 644.0
-color = Color(0.0313726, 0.364706, 0.803922, 1)
+color = Color(0.0313726, 0.364706, 0.803922, 0)
+
+[node name="CloudAnim1-1" parent="ColorRect" instance=ExtResource("6_hxktm")]
+position = Vector2(-40, 112)
+
+[node name="CloudAnim1-2" parent="ColorRect" instance=ExtResource("6_hxktm")]
+_animation = "cloud_1-2"
+
+[node name="CloudAnim1-3" parent="ColorRect" instance=ExtResource("6_hxktm")]
+_animation = "cloud_1-3"
+
+[node name="CloudAnim2-1" parent="ColorRect" instance=ExtResource("6_hxktm")]
+_animation = "cloud_2-1"
+
+[node name="CloudAnim2-2" parent="ColorRect" instance=ExtResource("6_hxktm")]
+_animation = "cloud_2-2"
+
+[node name="CloudAnim2-3" parent="ColorRect" instance=ExtResource("6_hxktm")]
+_animation = "cloud_2-3"
 
 [node name="User Interface" parent="ColorRect" instance=ExtResource("2_ww4sb")]
 layout_mode = 1
@@ -54,9 +78,17 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
-position = Vector2(576, 480)
+position = Vector2(576, 494)
 shape = SubResource("RectangleShape2D_gqknc")
 debug_color = Color(0.945098, 0.121569, 0.501961, 0.419608)
+
+[node name="ColorRect" type="ColorRect" parent="Net"]
+offset_left = 560.0
+offset_top = 344.0
+offset_right = 592.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 position = Vector2(-104, 0)
@@ -65,20 +97,22 @@ collision_mask = 17
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Boundaries"]
+visible = false
 position = Vector2(688, 624)
 scale = Vector2(9.125, 0.125)
 texture = ExtResource("2_6its2")
 
 [node name="LeftWall" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(120, 60)
+position = Vector2(92, 64)
 shape = SubResource("RectangleShape2D_qdn5b")
 
 [node name="RightWall" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(1248.5, 64)
+position = Vector2(1272, 72)
 shape = SubResource("RectangleShape2D_vciy1")
 
 [node name="TopWall" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(676, -508.5)
+position = Vector2(694, -508.5)
+scale = Vector2(1.01105, 1.02117)
 shape = SubResource("RectangleShape2D_jll3x")
 
 [node name="PlayerCollider" type="Area2D" parent="."]
@@ -93,7 +127,7 @@ collision_layer = 19
 collision_mask = 19
 
 [node name="LeftFloor" type="CollisionShape2D" parent="LeftFloorCollider"]
-position = Vector2(287.25, 636)
+position = Vector2(276, 636)
 shape = SubResource("RectangleShape2D_7w26h")
 
 [node name="RightFloorCollider" type="StaticBody2D" parent="." groups=["right_floor"]]
@@ -102,11 +136,5 @@ collision_layer = 19
 collision_mask = 19
 
 [node name="RightFloor" type="CollisionShape2D" parent="RightFloorCollider"]
-position = Vector2(0, 1)
+position = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_v60bs")
-
-[node name="CloudAnim" parent="." instance=ExtResource("6_hxktm")]
-position = Vector2(-40, 112)
-
-[node name="CloudAnim2" parent="." instance=ExtResource("6_hxktm")]
-_animation = "cloud_2"
