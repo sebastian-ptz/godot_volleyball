@@ -30,34 +30,40 @@ func _process(delta):
 	#print("Anim: " + get_random_animation())
 	
 	if velocity.y < 0:
-		$AnimatedSprite2D.animation = "jump"
+		$AnimatedSprite2D.play("jump")
 	elif velocity.y < 0 && velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.animation = "jump"
+		$AnimatedSprite2D.play("jump")
 	elif velocity.y < 0 && velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.animation = "jump"
+		$AnimatedSprite2D.play("jump")
 	elif velocity.y > 0:
-		$AnimatedSprite2D.animation = "fall"
+		$AnimatedSprite2D.play("fall")
 	elif velocity.y > 0 && velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.animation = "fall"
+		$AnimatedSprite2D.play("fall")
 	elif velocity.y > 0 && velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.animation = "fall"
+		$AnimatedSprite2D.play("fall")
 	elif velocity.y == 0 && velocity.x < 0 :
 		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.play("walk")
 	elif velocity.y == 0 && velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.play("walk")
 	else:
-		$AnimatedSprite2D.animation = get_random_animation(delta)
+		#should pick random animaton but overrides currently playing animations
+		#play_random_idle_animation(delta)  
+		$AnimatedSprite2D.play("blink")
 
 
-func get_random_animation(delta) -> String:
+func play_random_idle_animation():
 	var random_float = randf()
-	if int(delta)%5 == 0:
+	if $AnimatedSprite2D.animation_finished:
 		if random_float < 0.05: #5% blink
-			return "blink"
-	return "idle"
+			$AnimatedSprite2D.play("blink")
+		else: 
+			$AnimatedSprite2D.play("idle")
+	else: 
+		$AnimatedSprite2D.play($AnimatedSprite2D.animation)
+	
