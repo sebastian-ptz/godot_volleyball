@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpn8jxrvro0n3"]
+
+[ext_resource type="Texture2D" uid="uid://bide1ukibhxhu" path="res://art/bird bypngwing.png" id="1_eichk"]
+[ext_resource type="Script" path="res://bird_animated.gd" id="2_ryjre"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnrmn"]
+atlas = ExtResource("1_eichk")
+region = Rect2(0, 552, 184, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4cpw"]
+atlas = ExtResource("1_eichk")
+region = Rect2(184, 552, 184, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6p2r"]
+atlas = ExtResource("1_eichk")
+region = Rect2(368, 552, 184, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g17dg"]
+atlas = ExtResource("1_eichk")
+region = Rect2(552, 552, 184, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kn8q"]
+atlas = ExtResource("1_eichk")
+region = Rect2(736, 552, 184, 184)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yq7k8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnrmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4cpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6p2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g17dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kn8q")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_m3dqu"]
+resource_name = "fly"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 100), Vector2(2000, 300)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqbg6"]
+_data = {
+"fly": SubResource("Animation_m3dqu")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_yq7k8")
+animation = &"fly"
+script = ExtResource("2_ryjre")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lqbg6")
+}
