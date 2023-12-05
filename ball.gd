@@ -3,7 +3,7 @@ extends RigidBody2D
 signal hit_left_floor
 signal hit_right_floor
 
-enum BALL {DEFAULT, SLOW, BIG, BOUNCE}
+enum BALL {DEFAULT=0, SLOW=1, BIG=2, BOUNCE=3}
 
 @export var ball_type = BALL.SLOW
 
@@ -16,7 +16,10 @@ enum BALL {DEFAULT, SLOW, BIG, BOUNCE}
 var gravity = 1000
 func _ready():
 	match ball_type:
+		BALL.DEFAULT:
+			$CollisionShape2D.shape.radius = 32
 		BALL.SLOW:
+			$CollisionShape2D.shape.radius = 32
 			self.gravity_scale = 0.2
 			MAX_SPEED_x = MAX_SPEED_x/2
 			MAX_SPEED_y = MAX_SPEED_y/2
@@ -26,6 +29,7 @@ func _ready():
 			$Sprite2D.scale = Vector2(1.5,1.5)
 			$CollisionShape2D.shape.radius = 48
 		BALL.BOUNCE:
+			$CollisionShape2D.shape.radius = 32
 			MAX_SPEED_x = MAX_SPEED_x*5
 			MAX_SPEED_y = MAX_SPEED_y*5
 			MIN_SPEED_x = MIN_SPEED_x*5

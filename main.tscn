@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3s1068eq6d6w"]
+[gd_scene load_steps=14 format=3 uid="uid://c3s1068eq6d6w"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_052qy"]
 [ext_resource type="PackedScene" uid="uid://ua12w7l4xw6h" path="res://player.tscn" id="1_ujl1b"]
 [ext_resource type="Texture2D" uid="uid://dv2mjncx1ddut" path="res://icon.svg" id="2_6its2"]
 [ext_resource type="PackedScene" uid="uid://bmawmcgx27ssq" path="res://user_interface.tscn" id="2_ww4sb"]
 [ext_resource type="Texture2D" uid="uid://cdftk0kjdfjts" path="res://art/beach.jpg" id="3_5cttt"]
-[ext_resource type="PackedScene" uid="uid://biuxvb4odvmk3" path="res://ball.tscn" id="3_xp26c"]
-[ext_resource type="PackedScene" uid="uid://cribfhqx77pav" path="res://cloud_animated.tscn" id="6_hxktm"]
+[ext_resource type="PackedScene" path="res://cloud_animated.tscn" id="6_hxktm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqknc"]
 size = Vector2(26, 300)
@@ -63,14 +62,11 @@ _animation = "cloud_2-3"
 [node name="User Interface" parent="ColorRect" instance=ExtResource("2_ww4sb")]
 layout_mode = 1
 
-[node name="Ball" parent="." instance=ExtResource("3_xp26c")]
-position = Vector2(575, 84)
-
 [node name="Player" parent="." instance=ExtResource("1_ujl1b")]
-position = Vector2(96, 560)
+position = Vector2(267, 527)
 
 [node name="Player2" parent="." instance=ExtResource("1_ujl1b")]
-position = Vector2(1064, 560)
+position = Vector2(906, 523)
 player_type = "p2"
 
 [node name="Net" type="StaticBody2D" parent="."]
@@ -138,3 +134,9 @@ collision_mask = 19
 [node name="RightFloor" type="CollisionShape2D" parent="RightFloorCollider"]
 position = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_v60bs")
+
+[node name="LeftSpawnLocation" type="Marker2D" parent="."]
+position = Vector2(278, 42)
+
+[node name="RightSpawnLocation" type="Marker2D" parent="."]
+position = Vector2(896, 42)

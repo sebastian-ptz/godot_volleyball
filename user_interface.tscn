@@ -40,3 +40,43 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
+
+[node name="WinMessageLeft" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.201
+anchor_top = 0.278
+anchor_right = 0.201
+anchor_bottom = 0.278
+offset_left = -135.552
+offset_top = -25.144
+offset_right = 134.448
+offset_bottom = 52.856
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
+text = "[center][rainbow][wave amp=50]You won![/wave][/rainbow][/center]"
+
+[node name="WinMessageRight" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.278
+anchor_right = 0.8
+anchor_bottom = 0.278
+offset_left = -135.552
+offset_top = -25.144
+offset_right = 134.448
+offset_bottom = 52.856
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
+text = "[center][rainbow][wave amp=50]You won![/wave][/rainbow][/center]"
