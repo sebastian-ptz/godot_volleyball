@@ -116,7 +116,7 @@ _data = {
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fumc7")
 animation = &"attack"
-frame_progress = 0.269476
+frame_progress = 0.993422
 script = ExtResource("14_suqaw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
