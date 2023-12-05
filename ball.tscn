@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://biuxvb4odvmk3"]
+[gd_scene load_steps=5 format=3 uid="uid://biuxvb4odvmk3"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_8t0s2"]
 [ext_resource type="Texture2D" uid="uid://dv2mjncx1ddut" path="res://icon.svg" id="1_13djt"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8ygd"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6log"]
 radius = 32.0
 
-[node name="Ball" type="CharacterBody2D"]
+[node name="Ball" type="RigidBody2D"]
 collision_layer = 17
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_v8ygd")
+gravity_scale = 0.7
+continuous_cd = 1
+max_contacts_reported = 4
+contact_monitor = true
 script = ExtResource("1_8t0s2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,3 +27,5 @@ debug_color = Color(0.819608, 0.403922, 0.00784314, 0.419608)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("1_13djt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
