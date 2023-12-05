@@ -9,15 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("impulse_left"):
-		$Ball.apply_impulse(Vector2(-400,0))
-	if Input.is_action_just_pressed("impulse_right"):
-		$Ball.apply_impulse(Vector2(400,0))
-	if Input.is_action_just_pressed("impulse_up"):
-		$Ball.apply_impulse(Vector2(0,-400))
-	if Input.is_action_just_pressed("impulse_down"):
-		$Ball.apply_impulse(Vector2(0,400))
-	
+	pass
 
 
 func _on_ball_body_entered(body):
