@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var _animation = "cloud_1"
+@export var _animation = "cloud_1-1"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

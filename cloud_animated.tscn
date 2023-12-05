@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cribfhqx77pav"]
+[gd_scene load_steps=16 format=3 uid="uid://cribfhqx77pav"]
 
 [ext_resource type="Texture2D" uid="uid://biv6fe4h2r5l4" path="res://art/cloudset1.png" id="1_k2krs"]
 [ext_resource type="Script" path="res://cloud_animated.gd" id="2_dgsa8"]
@@ -46,6 +46,54 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_vpbp1"]
+resource_name = "cloud_1-2"
+length = 84.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(24, 84),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, 50), Vector2(2000, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_tm8t6"]
+resource_name = "cloud_1-3"
+length = 108.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(108),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2000, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_civ3u"]
+resource_name = "cloud_slow"
+length = 72.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(12, 72),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, 150), Vector2(1900, 100)]
+}
+
 [sub_resource type="Animation" id="Animation_bbf52"]
 resource_name = "cloud_normal"
 length = 60.0
@@ -62,9 +110,9 @@ tracks/0/keys = {
 "values": [Vector2(-50, 50), Vector2(2000, 50)]
 }
 
-[sub_resource type="Animation" id="Animation_civ3u"]
-resource_name = "cloud_slow"
-length = 60.0
+[sub_resource type="Animation" id="Animation_qtm7e"]
+resource_name = "cloud_3-2"
+length = 96.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,20 +120,40 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 60),
+"times": PackedFloat32Array(36, 96),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-100, 150), Vector2(1900, 100)]
+"values": [Vector2(-50, 150), Vector2(1900, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_7to3v"]
+resource_name = "cloud_2-3"
+length = 180.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(120, 180),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, 150), Vector2(1900, 100)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w246j"]
 _data = {
-"cloud_1": SubResource("Animation_bbf52"),
-"cloud_2": SubResource("Animation_civ3u")
+"cloud_1-1": SubResource("Animation_bbf52"),
+"cloud_1-2": SubResource("Animation_vpbp1"),
+"cloud_1-3": SubResource("Animation_tm8t6"),
+"cloud_2-1": SubResource("Animation_civ3u"),
+"cloud_2-2": SubResource("Animation_qtm7e"),
+"cloud_2-3": SubResource("Animation_7to3v")
 }
 
 [node name="CloudAnim" type="AnimatedSprite2D"]
-position = Vector2(-50, 50)
+position = Vector2(-50, 150)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ii0qo")
 animation = &"move"
