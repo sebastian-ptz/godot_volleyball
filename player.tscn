@@ -95,8 +95,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yo05x"]
-radius = 38.0
-height = 108.0
+radius = 56.0
+height = 172.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 17
@@ -104,10 +104,10 @@ script = ExtResource("1_njmwk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 5)
-scale = Vector2(4.2, 3.78)
+scale = Vector2(6.86667, 6.18)
 sprite_frames = SubResource("SpriteFrames_1ym8m")
 animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-3, -2)
 shape = SubResource("CapsuleShape2D_yo05x")
