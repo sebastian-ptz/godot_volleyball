@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://ts3diqllusfy"]
+
+[ext_resource type="Texture2D" uid="uid://ctqmopirgs57l" path="res://art/ghost/ghost walk/sprite_0.png" id="1_d5g3n"]
+[ext_resource type="Texture2D" uid="uid://b6rlgcirns31g" path="res://art/ghost/ghost attack/sprite_0.png" id="1_xoo1f"]
+[ext_resource type="Texture2D" uid="uid://tljud5s21jkv" path="res://art/ghost/ghost attack/sprite_1.png" id="2_8mosn"]
+[ext_resource type="Texture2D" uid="uid://chxiqg5bmfps3" path="res://art/ghost/ghost walk/sprite_1.png" id="2_dbmpj"]
+[ext_resource type="Texture2D" uid="uid://cqbkmx844k53w" path="res://art/ghost/ghost walk/sprite_2.png" id="3_adwf1"]
+[ext_resource type="Texture2D" uid="uid://cyj5orevikqvc" path="res://art/ghost/ghost attack/sprite_2.png" id="3_ci6bp"]
+[ext_resource type="Texture2D" uid="uid://dtww7rbr5vcvm" path="res://art/ghost/ghost attack/sprite_3.png" id="4_4j1ji"]
+[ext_resource type="Texture2D" uid="uid://gjyaww15u8qb" path="res://art/ghost/ghost walk/sprite_3.png" id="4_14muh"]
+[ext_resource type="Texture2D" uid="uid://cj3x301taakd4" path="res://art/ghost/ghost walk/sprite_4.png" id="5_d1jqm"]
+[ext_resource type="Texture2D" uid="uid://cybmvrd8wtod0" path="res://art/ghost/ghost attack/sprite_4.png" id="5_xahb8"]
+[ext_resource type="Texture2D" uid="uid://ch221tptmvki8" path="res://art/ghost/ghost attack/sprite_5.png" id="6_gjvci"]
+[ext_resource type="Texture2D" uid="uid://bw7d4wg2etaa6" path="res://art/ghost/ghost walk/sprite_5.png" id="6_v4mwd"]
+[ext_resource type="Texture2D" uid="uid://d2khn7o4n08nr" path="res://art/ghost/ghost attack/sprite_6.png" id="7_r7p0p"]
+[ext_resource type="Script" path="res://animated_ghost.gd" id="14_suqaw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fumc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xoo1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8mosn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ci6bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4j1ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xahb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gjvci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r7p0p")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d5g3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dbmpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_adwf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_14muh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d1jqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v4mwd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_5cv7l"]
+resource_name = "ghost_around"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.3, 5, 12, 19.9, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1200, 530), Vector2(800, 530), Vector2(800, 530), Vector2(400, 200), Vector2(800, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.1, 19.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 12.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"attack", &"attack", &"walk"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nrr5"]
+_data = {
+"ghost_around": SubResource("Animation_5cv7l")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(1177.36, 530)
+sprite_frames = SubResource("SpriteFrames_fumc7")
+animation = &"attack"
+script = ExtResource("14_suqaw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4nrr5")
+}
